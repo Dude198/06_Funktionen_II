@@ -8,10 +8,28 @@
 4. Ausgabe in Konsole : check!
 */
 
+// module: division a / b |  test:
+output(divide(2,3));
+output(divide(2,-3));
+output(divide(2,0));
+output(divide(0,2));
+function divide(a,b) {
+
+    if (b != 0) {
+        // true
+        return a / b; 
+    } else {
+        // false
+        return "ERROR";
+    }
+    
+ }
+
+
 // module: multiplication a * b |  test:
-output(multiply(2,3));
-output(multiply(2,-3));
-output(multiply(2,0));
+// output(multiply(2,3));
+// output(multiply(2,-3));
+// output(multiply(2,0));
 function multiply(a,b) {
     return a * b; 
  }
