@@ -8,27 +8,27 @@
 */
 
 // module: calculator | tests:
-// agreement : "+","-","*",":"
-output(calculator(2,2,"+"));
-output(calculator(2,2,"-"));
-output(calculator(2,2,"*"));
-output(calculator(2,2,":"));
-output(calculator(2,2,"#?!"));
+// // agreement : "+","-","*",":"
+// output(calculator(2,2,"+"));
+// output(calculator(2,2,"-"));
+// output(calculator(2,2,"*"));
+// output(calculator(2,0,":"));
+// output(calculator(2,2,"#?!"));
 
-function calculator(a,b,op) {
-    switch (op) {
-        case "+": // addition
-            return add(a,b);
-        case "-": // subtraktion
-            return subtract(a,b);
-        case "*": // multiplikation
-            return multiply(a,b);
-        case ":": // divison
-            return divide(a,b);
-        default:  // Error ...
-            return "Something went wrong!";
-    }
-}
+// function calculator(a,b,op) {
+//     switch (op) {
+//         case "+": // addition
+//             return add(a,b);
+//         case "-": // subtraktion
+//             return subtract(a,b);
+//         case "*": // multiplikation
+//             return multiply(a,b);
+//         case ":": // divison
+//             return divide(a,b);
+//         default:  // Error ...
+//             return "Something went wrong!";
+//     }
+// }
 
 
 // module: division a / b |  test:
@@ -68,17 +68,15 @@ function add(a,b) {
 }
 
 // module: console output | test:
-// output("hello");
-// output(2);
+output("hello");
+output(2);
 function output(outputData) {
-    console.log(outputData);
-}
-/*** Rechner */
-/*
-0. a+b / a-b/ a*b / a/b  // ergebnis c 
-1. Dateneingabe + -überprüfung :
-2. Auswahl Rechenart : 
-3. Fkt. Grundrechenarten :
-4. Ausgabe in Konsole :
-*/
 
+    // console.log(typeof outputData);
+
+    if (typeof outputData == "number") {
+        console.log("the result is: " + outputData);     
+    } else {
+        console.log("ERROR: " + outputData);
+    }
+}
