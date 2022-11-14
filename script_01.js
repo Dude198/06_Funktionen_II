@@ -4,22 +4,45 @@
 0. a+b / a-b/ a*b / a/b  // ergebnis c 
 1. Dateneingabe + -überprüfung :
 2. Auswahl Rechenart : 
-3. Fkt. Grundrechenarten :
+3. Fkt. Grundrechenarten : check!
 4. Ausgabe in Konsole : check!
 */
 
+// module: calculator | tests:
+// agreement : "+","-","*",":"
+output(calculator("+"));
+output(calculator("-"));
+output(calculator("*"));
+output(calculator(":"));
+output(calculator("#?!"));
+
+function calculator(op) {
+    switch (op) {
+        case "+": // addition
+            return "add";
+        case "-": // subtraktion
+            return "sub";
+        case "*": // multiplikation
+            return "mul";
+        case ":": // divison
+            return "div";
+        default:  // Error ...
+            return "Something went wrong!";
+    }
+}
+
+
 // module: division a / b |  test:
-output(divide(2,3));
-output(divide(2,-3));
-output(divide(2,0));
-output(divide(0,2));
+// output(divide(2,3));
+// output(divide(2,-3));
+// output(divide(2,0));
+// output(divide(0,2));
 function divide(a,b) {
     if (b == 0) {
         return "Division by 0 not possible!"; 
     }
     return a / b; 
  }
-
 
 // module: multiplication a * b |  test:
 // output(multiply(2,3));
