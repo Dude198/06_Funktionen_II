@@ -1,53 +1,90 @@
 
+"use strict";
+
 /*** Rechner */
 /*
 0. a+b / a-b/ a*b / a/b  // ergebnis c 
 1. Dateneingabe + -überprüfung :
-2. Auswahl Rechenart : 
+2. Auswahl Rechenart : check!
 3. Fkt. Grundrechenarten : check!
 4. Ausgabe in Konsole : check!
 */
 
+
+// Globale Variable
+let isNotAborted; 
+
 // application / App
-// startApp();
+startApp();
 function startApp() {
-    output(calculator(getNumber("1st"),getNumber("2nd"),getOp()));
+    let num1,num2,op;
+    isNotAborted = true;
+
+    if (isNotAborted){num1 = getNumber("1st");}
+    if (isNotAborted){num2 = getNumber("2nd");}
+    if (isNotAborted){op = getOp();}
+    
+    if (isNotAborted){
+        output(calculator(num1,num2,op)); 
+    } else{
+        output("Aborted by user!");
+    }
 }
 
+// module: data input | test:
+//output(getNumber("1st"));
 function getNumber(figure) {
-    let inputStr = prompt("Please insert " + figure + " number:")
+    const displayStr = "Please insert " + figure + " number:";
+    let inputStr = prompt(displayStr) 
     let num = parseInt(inputStr);
+
+    // if num is NOT a number AND user DIDN'T click at Abbrechen
+    while (isNaN(num) && (inputStr !== null)) {
+        inputStr =  prompt(displayStr);
+        num = parseInt(inputStr); 
+    }
+    
+    // if this is aborted, ALL gets aborted ...
+    if(inputStr == null){isNotAborted = false;}
     return num;
+        
 }
 
-
-// module: input operator | Test
-output(getOp());
+// module: input operator | Test:
+//output(getOp());
 function getOp() {
-    let op = prompt("Please insert an operator:");
-    if (isOpValid(op)) {
-        return "operator ok";
-    } else { 
-        return "operator nicht ok";
+    const displayStr = "Please insert correct operator [ + | - | * | : | / ]:";
+    let op = prompt(displayStr); 
+
+    // if op is NOT valid AND user DIDN'T click at Abbrechen
+    while (isNotValidOp(op) && (op !== null)) {
+        op = prompt(displayStr);
     }
+
+    if (op == null){isNotAborted = false;}
+    return op;
 }
 
-function isOpValid(op) {
-    switch (op) {
-        case "+":
-        case "-": 
-        case "*":
-        case "/":
-    }
+// module: check operator | Test:
+// agreement : "+","-","*",":","/"
+// output(isNotValidOp("+"));
+// output(isNotValidOp("-"));
+// output(isNotValidOp("*"));
+// output(isNotValidOp(":"));
+// output(isNotValidOp("/"));
+// output(isNotValidOp("#?#"));
+// output(isNotValidOp(""));
+function isNotValidOp(op) {
+    return op != "+" && op != "-" && op != "*" && op != ":" && op != "/";
 }
-
 
 // module: calculator | tests:
-// // agreement : "+","-","*",":"
+// agreement : "+","-","*",":"
 // output(calculator(2,2,"+"));
 // output(calculator(2,2,"-"));
 // output(calculator(2,2,"*"));
-// output(calculator(2,0,":"));
+// output(calculator(2,2,":"));
+// output(calculator(2,0,"/"));
 // output(calculator(2,2,"#?!"));
 function calculator(a,b,op) {
     switch (op) {
@@ -58,13 +95,12 @@ function calculator(a,b,op) {
         case "*": // multiplikation
             return multiply(a,b);
         case ":": // divison
-        case "/": // division
+        case "/": // divison
             return divide(a,b);
         default:  // Error ...
             return "Something went wrong!";
     }
 }
-
 
 // module: division a / b |  test:
 // output(divide(2,3));
@@ -106,12 +142,10 @@ function add(a,b) {
 // output("hello");
 // output(2);
 function output(outputData) {
-
-    // console.log(typeof outputData);
-
+   //console.log(typeof outputData);
     if (typeof outputData == "number") {
-        console.log("the result is: " + outputData);     
+        console.log("The result is: " + outputData); 
     } else {
-        console.log("ERROR: " + outputData);
+        console.log("ERROR: " + outputData); 
     }
 }
